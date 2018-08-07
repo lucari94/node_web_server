@@ -27,7 +27,7 @@ hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
 })
 
-app.get('/', (requestAnimationFrame, res) => {
+app.get('/api/v1', (requestAnimationFrame, res) => {
     // res.send('It works')
     res.send({
         name: 'Prova',
@@ -35,13 +35,25 @@ app.get('/', (requestAnimationFrame, res) => {
     });
 });
 
-app.get('/about', (req, res) => {
-    res.send('About Page');
+app.get('/', (req, res) => {
+    res.render('home.hbs');
+})
+
+app.get('/maintenance', (req, res) => {
+    res.render('maintenance.hbs', {
+        pageTitle: 'work in progress'
+    });
 })
 
 app.get('/help', (req, res) => {
     res.render('help.hbs', {
         pageTitle: 'Help Page'
+    });
+})
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Project Page'
     });
 })
 
